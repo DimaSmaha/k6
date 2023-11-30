@@ -23,7 +23,7 @@ let jsonData = JSON.stringify({
 });
 
 export default function () {
-  const response = http.get(baseUrl + "/users", jsonData, {
+  const response = http.post(baseUrl + "/users", jsonData, {
     headers: headers,
   });
   check_response(response);
