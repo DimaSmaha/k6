@@ -14,11 +14,11 @@ export const options = {
   insecureSlipTLSVerify: true,
   noConnectionReuse: false,
   stages: [
-    { duration: "15s", target: 100 }, //belove normal load
+    { duration: "15s", target: 100 }, //normal load
     { duration: "30s", target: 100 },
     { duration: "10s", target: 800 }, //Spike to 800
     { duration: "60s", target: 800 },
-    { duration: "10s", target: 100 }, //beyong breaking point
+    { duration: "10s", target: 100 }, //go back to normal
     { duration: "30s", target: 100 },
     { duration: "60s", target: 0 }, //scale down recover
   ], // generally better to create those test for like 10m
