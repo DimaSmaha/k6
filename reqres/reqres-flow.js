@@ -4,6 +4,8 @@ import { check, sleep } from "k6";
 const baseUrl = "https://reqres.in/api";
 
 export const options = {
+  insecureSlipTLSVerify: true,
+  noConnectionReuse: false,
   stages: [
     { duration: "10s", target: 15 }, //increase to 5 for 5 seconds
     { duration: "5s", target: 40 }, //increase 5 more for other 5 seconds
