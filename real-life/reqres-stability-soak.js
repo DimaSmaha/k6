@@ -1,8 +1,8 @@
 /*
-*Load testing* – 10k users/hr –
- ==response time== with a ==big==, 
- ==expected load of users==. 
- As well as their peak loads
+*Stability testing* aka *Soak testing* 
+– 20k users/24hrs –
+ test a ==big load of users
+  ==for a long time
 */
 
 import http from "k6/http";
@@ -16,10 +16,10 @@ export const options = {
   stages: [
     { duration: "20s", target: 200 }, //normal load
     { duration: "60s", target: 200 },
-    { duration: "20s", target: 300 }, //normal load peak
-    { duration: "60s", target: 300 },
+    { duration: "20s", target: 300 }, //normal load peak OR 75% of stress test border
+    { duration: "300s", target: 300 },
     { duration: "60s", target: 0 }, //go back
-  ], // generally better to create those test for like 10-20m
+  ], // generally better to create those test for like 4-12hrs!
   // also during load test we should use threshold to see a time
   thresholds: {
     http_req_duration: ["p(99)<200"], //99% must complete less then 200ms
